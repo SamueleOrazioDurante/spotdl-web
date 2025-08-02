@@ -1,0 +1,5 @@
+fastapi==0.103.0
+uvicorn[standard]==0.23.2
+spotdl>=4.3.0
+yt-dlp>=2023.7.6
+python-multipart==0.0.6
