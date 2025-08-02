@@ -118,10 +118,14 @@ def download_with_ytdlp(item):
             item.url
         ]
         
-        # Add cookies if available
+        # Add cookies if available (for YouTube Premium quality)
         cookie_file = os.path.join(CONFIG_DIR, "cookies.txt")
         if os.path.exists(cookie_file):
-            cmd.extend(["--cookies", cookie_file])
+            # Copy cookies to a writable temp location
+            temp_cookies = "/tmp/cookies.txt"
+            import shutil
+            shutil.copy2(cookie_file, temp_cookies)
+            cmd.extend(["--cookies", temp_cookies])
         
         result = subprocess.run(cmd, check=True, timeout=600, capture_output=True, text=True)
         
