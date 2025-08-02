@@ -1,0 +1,9 @@
+services:
+  app:
+    image: ghcr.io/samueleoraziodurante/spotdl-web:latest
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./config:/config
+      - ./music:/music
+    restart: unless-stopped
